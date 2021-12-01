@@ -1,0 +1,474 @@
+/*
+##############################################
+    CSS Resets For Removing Default Styles
+##############################################
+*/
+*,*::before,*::after{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    font-family: 'Raleway', sans-serif;
+    line-height: 1.5;
+
+    color: var(--clr-theme-primary);
+    background:var(--clr-theme-secondary)   url(./static/pattern.png) ;
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+ul{
+    list-style: none;
+    padding: 0;
+}
+img{
+    max-width: 100%;
+}
+
+button{
+    border: none;
+    &:hover{
+        outline: solid 1px var(--clr-theme-text-light);
+        box-shadow: 0 0 5px var(--clr-theme-text-dark);
+    }
+    &:focus{
+        outline: solid 1px var(--clr-theme-text-light);
+    }
+}
+/*
+##############################################
+    CSS variables for themeing and styling
+##############################################
+*/
+
+:root{
+    --clr-theme-primary:hsl(32, 36%, 28%);
+    --clr-theme-secondary:hsl(35, 37%, 90%);
+    --clr-theme-text-dark:#222;
+    --clr-theme-text-light:#fff;
+
+    scroll-behavior: smooth;
+}
+
+
+/*
+##############################################
+    Wrappers
+##############################################
+*/
+.hero_wrapper{
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr;
+
+    color: var(--clr-theme-primary);
+    background:var(--clr-theme-secondary) url(./static/pattern.png) ;
+}
+
+/*
+##############################################
+    Header
+##############################################
+*/
+
+.header{
+    width: 100%;
+    height: 5em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 1em;
+
+    &__logo{
+        height: auto;
+    }
+
+    &__navigation{
+        display: flex;
+
+        &__list{
+            display: flex;
+            flex-direction: row;
+            gap: 1em;
+            
+            &--mobile{
+                display: flex;
+            }
+
+            &--desktop{
+                display: none;
+                pointer-events: none;
+            }
+
+            &--item{
+                font-size: 1.1rem;
+                font-weight: 400;
+                color: var(--clr-theme-primary);
+            }
+        }
+        
+    }
+}
+
+.hero{
+    width: 100%;
+    display: grid;
+
+    grid-template-columns:1fr;
+    grid-template-rows: 1fr 1fr;
+    padding: 1em;
+    
+    &__text{
+        align-self: center;
+    }
+
+    &__title{
+        font-size: clamp(2.5rem,  8.333vw, 3.5rem);
+        font-weight: 400;
+    }
+
+    &__cta{
+        padding-inline: 1.2em;
+        padding-block: .8em;
+        background-color: var(--clr-theme-primary);
+        border: none;
+        color: var(--clr-theme-text-light);
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 350ms ease-in-out;
+    }
+
+    &__illustration{
+        width: 100%;
+        height: 100%;
+        display: grid;
+        &__image{
+            width:300px;
+            aspect-ratio: 1/1;  
+            background: url(./static/home__illustration.svg) center/cover;
+            justify-self: end;
+        }
+    }
+}
+
+/*
+##############################################
+    Services
+##############################################
+*/
+
+.services{
+    color: var(--clr-theme-primary);
+    background:var(--clr-theme-secondary);
+    padding:1em;
+
+    &__title{
+        margin: 0;
+        font-size: clamp(.7rem,  6.333vw, 3.5rem);
+        font-weight: 400;
+        text-align: center;
+
+        margin-block: 2em;
+    }
+
+    &__list{
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        grid-gap: 1em;
+        &__items{
+            text-align: center;
+        }
+    }
+}
+
+/*
+##############################################
+    Contact
+##############################################
+*/
+
+.contact{
+    padding: 1em;
+    width: 100%;
+    display: grid;
+    grid-template-rows: 1fr auto;
+
+    &__info{
+        width: 100%;
+
+        &__title{
+            font-size: clamp(.7rem,  6.333vw, 3.5rem);
+            font-weight: 400;
+        }
+
+        &__list{
+            display: flex;
+            flex-direction: column;
+
+            &__item{
+                display: flex;
+                gap: 1em;
+                font-weight: bold;
+            }
+        }
+    }
+
+    &__illustration{
+        width: 100%;
+        display: grid;
+        &__image{
+            width:300px;
+            height: 300px;
+            background: url(./static/contact__illustration.svg) center/contain no-repeat;
+            justify-self: end;
+        }
+    }
+}
+
+/*
+##############################################
+    Footer
+##############################################
+*/
+
+.footer{
+    width: 100%;
+    height: 5em;
+    padding: 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__cta{
+        display: flex;
+        align-items: center;
+        gap: 1em;
+     
+        &__icon{
+            width: 50px;
+            aspect-ratio: 1/1;
+            background: url(./static/top.svg) center/cover no-repeat;
+        }
+    }
+}
+
+
+/*
+##############################################
+    Tablet 
+##############################################
+*/
+
+@media screen and (min-width: 750px){
+
+    .hero_wrapper{
+        margin-inline: auto;
+        width: 90%;
+        height: auto;
+    }
+
+    .hero{
+        grid-template-rows: 1fr;
+        grid-template-columns: 1fr 1fr;
+        &__text{
+            padding-block-end: 5em;
+        }
+        &__title{
+            font-size:2.5rem;
+        }
+    }
+
+    .services{
+        margin-inline: auto;
+        width: 90%;
+        &__title{
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 400;
+            text-align: center;
+            margin-block: 1.5em;
+        }   
+
+        &__list{
+            grid-template-columns: repeat(3,1fr);
+        }
+    }
+   
+    .contact{
+        margin-inline: auto;
+        width: 90%;
+        grid-template-rows: 1fr;
+        grid-template-columns: 1fr 1fr;
+        
+        &__info{
+            &__title{
+                font-size:1.5rem;
+                font-weight: 400;
+            }
+        }
+
+        &__illustration{
+            &__image{
+              justify-self: center;
+              align-self: center;
+            }
+        }
+    }
+
+    .footer{
+        width: 90%;
+        margin-inline: auto;
+    }
+}
+
+/*
+##############################################
+   Laptop
+##############################################
+*/
+
+@media screen and (min-width: 750px){
+
+    .hero_wrapper{
+        width: 80%;
+    }
+
+    .hero{
+        &__title{
+            font-size:3rem;
+        }
+    }
+
+    .services{
+        width: 80%;
+        &__title{
+            margin-block: 3em;
+            font-size:2rem;
+        }
+    }
+   
+    .contact{
+        width: 80%;
+        &__info{
+            &__title{
+                font-size:2rem;
+                margin-block: 1em;
+            }
+        }
+    }
+    .footer{
+        width: 80%;
+    }
+}
+
+
+/*
+##############################################
+   Bigger
+##############################################
+*/
+
+@media screen and (min-width: 1200px){
+
+    .header{
+        &__navigation{
+            &__list{
+                &--mobile{
+                    display: none;
+                    pointer-events: none;
+                }
+    
+                &--desktop{
+                    display: flex;
+                    gap: 2em;
+                    cursor: pointer;
+                    pointer-events: all;
+                }
+            }
+         
+        }
+    }
+    .hero_wrapper{
+        margin-inline: auto;
+        width: 70%;
+        height: 100vh;
+    }
+
+    .hero{
+     
+        &__text{
+            padding-block-end: 15em;
+        }
+        &__title{
+            font-size: clamp(2rem, 5vw, 5rem);
+            font-weight: 500;
+            margin-block-end: 1em;
+        }
+        &__cta{
+            padding-inline: 2em;
+            padding-block: 1em;
+        }
+
+        &__illustration{
+            &__image{
+                width:500px;
+                justify-self: end;
+                align-self: end;
+            }
+        }
+    }
+
+    .services{
+        width:70%;
+        margin-block: 7em;
+        &__title{
+            margin-block: 2em;
+            font-size:2.5rem;
+            font-weight: 600;
+        }
+
+        &__list{
+            width: 80%;
+            margin-inline: auto;
+            grid-template-columns: repeat(3,1fr);
+            grid-gap: 3em;
+            &__items{
+                text-align: center;
+            }
+        }
+    }
+   
+    .contact{
+        width: 70%;
+        margin-block: 7em 9em; 
+        &__info{
+            grid-column: 2/3;
+            &__title{
+                font-size:2rem;
+                margin-block: 1em;
+            }
+        }
+        &__illustration{
+            grid-row: 1/1;
+            grid-column: 1/2;
+            &__image{
+                width:800px;
+                aspect-ratio: 1/1;
+            }
+        }
+    }
+    .footer{
+        width: 70%;
+        margin-block: 2em;
+    }
+}
+
