@@ -61,6 +61,11 @@ button:focus {
 
 /*
 ##############################################
+    Responsive Mixins
+##############################################
+*/
+/*
+##############################################
     Wrappers
 ##############################################
 */
@@ -73,6 +78,13 @@ button:focus {
       grid-template-rows: auto 1fr;
   color: var(--clr-theme-primary);
   background: var(--clr-theme-secondary) url(./static/pattern.png);
+}
+
+.services__wrapper {
+  width: 100%;
+  height: auto;
+  background: var(--clr-theme-secondary);
+  padding-block: 1em;
 }
 
 /*
@@ -190,7 +202,6 @@ button:focus {
 .services {
   color: var(--clr-theme-primary);
   background: var(--clr-theme-secondary);
-  padding: 1em;
 }
 
 .services__title {
@@ -374,7 +385,7 @@ button:focus {
    Laptop
 ##############################################
 */
-@media screen and (min-width: 750px) {
+@media screen and (min-width: 1000px) {
   .hero_wrapper {
     width: 80%;
   }
@@ -452,7 +463,6 @@ button:focus {
   .services__title {
     margin-block: 2em;
     font-size: 2.5rem;
-    font-weight: 600;
   }
   .services__list {
     width: 80%;
@@ -492,5 +502,140 @@ button:focus {
     width: 70%;
     margin-block: 2em;
   }
+}
+
+/*
+##############################################
+   Terms And Conditions Starts
+##############################################
+*/
+.terms__wrapper {
+  color: var(--clr-theme-primary);
+  background: var(--clr-theme-secondary) url(./static/pattern.png);
+}
+
+.terms {
+  padding: 1em;
+}
+
+.terms__title {
+  font-size: clamp(2rem, 3 vw, 3rem);
+  font-weight: 500;
+}
+
+.terms__list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 1em;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-block: 1em;
+  counter-reset: terms;
+}
+
+.terms__list__item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 1em;
+  counter-increment: terms;
+}
+
+.terms__list__item::before {
+  content: counter(terms);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/*
+##############################################
+   Tablets
+##############################################
+*/
+@media screen and (min-width: 750px) {
+  .terms__wrapper {
+    margin-inline: auto;
+    width: 90%;
+    height: auto;
+  }
+}
+
+/*
+##############################################
+   Laptop
+##############################################
+*/
+@media screen and (min-width: 750px) {
+  .terms__wrapper {
+    width: 80%;
+  }
+}
+
+/*
+##############################################
+   Bigger 
+##############################################
+*/
+@media screen and (min-width: 1200px) {
+  .terms__wrapper {
+    width: 70%;
+  }
+}
+
+/*
+##############################################
+   Packages started 
+##############################################
+*/
+.packages {
+  padding: 1em;
+}
+
+.packages__title {
+  font-size: clamp(2rem, 3 vw, 3rem);
+  font-weight: 500;
+}
+
+.packages__list {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(250px, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1em;
+  padding: 0;
+}
+
+.packages__list__item {
+  padding: 0;
+}
+
+.package {
+  background-color: var(--clr-theme-text-light);
+  display: -ms-grid;
+  display: grid;
+  border-radius: 10px;
+}
+
+.package__name {
+  padding: 1em;
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin: 0;
+  background-color: var(--clr-theme-primary);
+  color: var(--clr-theme-text-light);
+  border-radius: 10px 10px 0 0;
+}
+
+.package__name::after {
+  content: "package";
+  display: block;
+  font-size: .8rem;
+}
+
+.package__prices {
+  padding: 1em;
 }
 /*# sourceMappingURL=index.css.map */

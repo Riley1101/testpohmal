@@ -1,3 +1,4 @@
+
 /*
 ##############################################
     CSS Resets For Removing Default Styles
@@ -41,6 +42,7 @@ button{
         outline: solid 1px var(--clr-theme-text-light);
     }
 }
+
 /*
 ##############################################
     CSS variables for themeing and styling
@@ -56,20 +58,52 @@ button{
     scroll-behavior: smooth;
 }
 
+/*
+##############################################
+    Responsive Mixins
+##############################################
+*/
+
+@mixin tablet{
+    @media screen and (min-width: 750px){
+      @content;
+    }
+}
+
+@mixin laptop{
+    @media screen and (min-width: 1000px){
+      @content;
+    }
+}
+    
+@mixin bigger{
+    @media screen and (min-width: 1200px){
+      @content;
+    }
+}
 
 /*
 ##############################################
     Wrappers
 ##############################################
 */
+
 .hero_wrapper{
     width: 100%;
     height: 100vh;
     display: grid;
     grid-template-rows: auto 1fr;
-
     color: var(--clr-theme-primary);
     background:var(--clr-theme-secondary) url(./static/pattern.png) ;
+   
+   
+}
+
+.services__wrapper{
+    width: 100%;
+    height: auto;
+    background:var(--clr-theme-secondary);
+    padding-block: 1em;
 }
 
 /*
@@ -125,7 +159,8 @@ button{
     grid-template-columns:1fr;
     grid-template-rows: 1fr 1fr;
     padding: 1em;
-    
+
+ 
     &__text{
         align-self: center;
     }
@@ -150,12 +185,15 @@ button{
         width: 100%;
         height: 100%;
         display: grid;
+
         &__image{
             width:300px;
             aspect-ratio: 1/1;  
             background: url(./static/home__illustration.svg) center/cover;
             justify-self: end;
         }
+
+       
     }
 }
 
@@ -168,7 +206,6 @@ button{
 .services{
     color: var(--clr-theme-primary);
     background:var(--clr-theme-secondary);
-    padding:1em;
 
     &__title{
         margin: 0;
@@ -268,8 +305,8 @@ button{
 ##############################################
 */
 
-@media screen and (min-width: 750px){
 
+@include tablet{
     .hero_wrapper{
         margin-inline: auto;
         width: 90%;
@@ -336,7 +373,7 @@ button{
 ##############################################
 */
 
-@media screen and (min-width: 750px){
+@include laptop{
 
     .hero_wrapper{
         width: 80%;
@@ -370,15 +407,13 @@ button{
     }
 }
 
-
 /*
 ##############################################
    Bigger
 ##############################################
 */
 
-@media screen and (min-width: 1200px){
-
+@include bigger{
     .header{
         &__navigation{
             &__list{
@@ -433,7 +468,7 @@ button{
         &__title{
             margin-block: 2em;
             font-size:2.5rem;
-            font-weight: 600;
+         
         }
 
         &__list{
@@ -472,3 +507,129 @@ button{
     }
 }
 
+/*
+##############################################
+   Terms And Conditions Starts
+##############################################
+*/
+
+.terms__wrapper{
+
+    color: var(--clr-theme-primary);
+    background:var(--clr-theme-secondary) url(./static/pattern.png) ;
+}
+
+.terms{
+    padding: 1em;
+
+    &__title{
+        font-size: clamp(2rem, 3    vw, 3rem);
+        font-weight: 500;
+    }
+
+    &__list{
+        display: flex;
+        gap: 1em;
+        flex-direction: column;      
+        margin-block: 1em;  
+        counter-reset: terms;
+        &__item{
+            display: flex;
+            gap: 1em;
+            counter-increment: terms;
+            &::before{
+                content: counter(terms);
+                font-size: 1rem;
+                font-weight: 600;
+            }
+        }
+    }
+}
+
+/*
+##############################################
+   Tablets
+##############################################
+*/
+@include tablet{
+    .terms__wrapper{
+        margin-inline: auto;
+        width: 90%;
+        height: auto;
+    }
+}
+
+/*
+##############################################
+   Laptop
+##############################################
+*/
+@include tablet{
+    .terms__wrapper{
+        width: 80%;
+    }
+}
+
+/*
+##############################################
+   Bigger 
+##############################################
+*/
+@include bigger{
+    .terms__wrapper{
+        width: 70%;
+    }
+}
+
+/*
+##############################################
+   Packages started 
+##############################################
+*/
+
+.packages{
+    padding: 1em;
+
+    &__title{
+        font-size: clamp(2rem, 3    vw, 3rem);
+        font-weight: 500;
+    }
+
+    &__list{
+        display: grid;
+        grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+        gap: 1em;
+        padding: 0;
+
+        &__item{
+            padding: 0;
+        }
+    }
+}
+
+// package card
+.package{
+    background-color: var(--clr-theme-text-light);
+    display: grid;
+    border-radius: 10px;
+
+    &__name{
+        padding: 1em;
+        font-size: 1.2rem;
+        font-weight: 500;
+        margin: 0;
+        background-color: var(--clr-theme-primary);
+        color: var(--clr-theme-text-light);
+        border-radius: 10px 10px 0 0;
+
+        &::after{
+            content: "package";
+            display: block;
+            font-size: .8rem;
+        }
+    }
+
+    &__prices{
+        padding: 1em;
+    }
+}
